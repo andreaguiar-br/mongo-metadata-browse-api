@@ -1,0 +1,26 @@
+version: "3"
+services:
+  mongo_monitor:
+    image: mongoGetMetadataAPI
+    hostname: mongoGetMetadata
+    container_name: mongoGetMetadata
+    # command: ["--log=DEBUG"]
+    # volumes: 
+    #   - vol-mongo:/data/db
+    restart: always
+    ports:
+      - "8012:8012"
+    # environment:
+    #   - CHANGE_STREAM_DB=mongo
+    #   - AMBIENTE_EXECUCAO=DESENV
+    #   - SCHEMA_DB=mongo
+      # - LOG_LEVEL=DEBUG
+    #   - MONGO_INITDB_ADMINPASSWORD=mongopass
+    #   - MONGO_REPLICA_SET_NAME=rsmongo
+    networks:
+      - net-backend
+
+networks:
+  net-backend:
+    external: 
+      name: mongo_net-backend
